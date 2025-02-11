@@ -1,5 +1,6 @@
 import { isLatitude, isLongitude, Position } from './position.js';
 import { ATCPosition, ESE, Freetexts } from './ese.js';
+import { SCT } from './sct.js';
 
 const sections = ['POSITIONS', 'SIDSSTARS', 'AIRSPACE', 'RADAR', 'FREETEXT', 'GROUND'] as const;
 
@@ -14,7 +15,7 @@ function getParts(str: string): string[] {
         .map((part) => part.trim());
 }
 
-export default function parseEse(input: string): ESE {
+export default function parseEse(sct: SCT, input: string): ESE {
     const lines = input.split('\n').map((line) => line.trim());
 
     let currentSection: CurrentSection = null;
@@ -50,16 +51,22 @@ export default function parseEse(input: string): ESE {
             }
             currentSection = matched;
         } else if (currentSection === 'FREETEXT') {
-            const [lat, lon, section, text] = getParts(line);
+            const [lat, lon, section, text, color, mainValue] = getParts(line);
+            let colorConverted = null;
             if (!freetext[section]) {
                 freetext[section] = [];
             }
             if (isLatitude(lat) && isLongitude(lon)) {
                 const position = Position.latlon(lat, lon);
+                if (color && sct.defines[color.toLowerCase()]) {
+                    colorConverted = sct.defines[color.toLowerCase()];
+                }
+
                 freetext[section].push({
                     position,
-                    text,
-                    color: null,
+                    text: text,
+                    ...(mainValue && { description: mainValue }),
+                    color: colorConverted,
                 });
             } else {
                 throw errorWithLine(

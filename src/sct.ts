@@ -51,6 +51,7 @@ export interface Region {
 export interface Label {
     text: string;
     position: Position;
+    description?: string;
     color: Color | null;
 }
 

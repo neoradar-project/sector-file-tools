@@ -160,6 +160,7 @@ function freetextToGeo(section: string, label: Label, system: CoordinateSystem =
             section,
             value: label.text,
             type: 'label',
+            ...(label.description && { description: label.description }),
             color: label.color?.toRGB(),
         },
     };
@@ -195,6 +196,7 @@ export function toGeoJson(
     sct: SCT,
     ese: ESE,
     asr: ASR | null,
+    useSctLabels: boolean = true,
     system: CoordinateSystem = 'UTM'
 ): FeatureCollection {
     const features: Feature[] = flatten([
@@ -227,17 +229,13 @@ export function toGeoJson(
         sct.star
             .filter((star) => (asr != null ? asr.stars.includes(star.id) : true))
             .flatMap((element) => geoToGeo(element, 'star', system)),
-        sct.labels.map((element) => labelToGeo(element, system)),
-        Object.entries(ese.freetext).flatMap(([section, labels]) =>
-            labels
-                .filter((label) =>
-                    asr != null
-                        ? asr.freetext[section] != null &&
-                          asr.freetext[section].includes(label.text)
-                        : true
-                )
-                .map((label) => freetextToGeo(section, label, system))
-        ),
+            ...(useSctLabels ? [sct.labels.map((element) => labelToGeo(element, system))] : []),
+        Object.entries(ese.freetext).flatMap(([section, labels]) => labels
+            .filter((label) => asr != null
+            ? asr.freetext[section] != null &&
+                asr.freetext[section].includes(label.text)
+            : true)
+            .map((label) => freetextToGeo(section, label, system))),
         sct.artcc
             .filter((artcc) => (asr != null ? asr.artcc.includes(artcc.id) : true))
             .flatMap((artcc) => geoToGeo(artcc, 'artcc', system)),
