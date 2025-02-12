@@ -1,3 +1,5 @@
+import { toMercator } from '@turf/projection'
+
 type InternalData =
     | { type: 'latlon'; lat: string; lon: string }
     | { type: 'latlonFloat'; lat: number; lon: number };
@@ -26,7 +28,7 @@ export class Position {
     }
 
     toUTM(): [number, number] {
-        return toUtm([this.lonFloat, this.latFloat]);
+        return toMercator([this.lonFloat, this.latFloat]);
     }
 
     // Convers to decimal degrees WGS84 with a precision of 6 decimals
@@ -111,27 +113,4 @@ function longitudeToDecimal(lon: string): number {
         throw new Error(`Invalid longitude ${lon}`);
     }
     return result;
-}
-
-const RADIUS = 6378137;
-const HALF_SIZE = Math.PI * RADIUS;
-function toUtm(input: readonly [number, number]): [number, number] {
-    const length = input.length;
-    const dimension = 2;
-    const output: [number, number] = [0, 0];
-
-    const halfSize = HALF_SIZE;
-    for (let i = 0; i < length; i += dimension) {
-        output[i] = (halfSize * input[i]) / 180;
-        let y = RADIUS * Math.log(Math.tan((Math.PI * (input[i + 1] + 90)) / 360));
-        if (y > halfSize) {
-            y = halfSize;
-        } else if (y < -halfSize) {
-            y = -halfSize;
-        }
-
-        output[i + 1] = y;
-    }
-
-    return output;
 }
