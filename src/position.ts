@@ -28,7 +28,12 @@ export class Position {
     }
 
     toUTM(): [number, number] {
-        return toMercator([this.lonFloat, this.latFloat]);
+        const converted = toMercator([this.lonFloat, this.latFloat]);
+        if (converted.length !== 2 || converted.some((x) => Number.isNaN(x) || x === null)) {
+            console.error(`Failed to convert ${this.internalData} to UTM`);
+            return [0, 0];
+        }
+        return converted as [number, number];
     }
 
     // Convers to decimal degrees WGS84 with a precision of 6 decimals
