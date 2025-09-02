@@ -2,11 +2,15 @@
 .nyc_output
 .editorconfig
 coverage
-src
 node_modules
 test
 tmp
-tsconfig.json
 *.iml
 .mocharc.json
 .prettierignore
+.github
+.git
+.gitignore
+tsconfig.prod.json
+# Keep source for source maps
+# src

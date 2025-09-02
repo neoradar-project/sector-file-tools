@@ -1,6 +1,6 @@
 {
     "name": "sector-file-tools",
-    "version": "1.2.1",
+    "version": "1.2.3",
     "description": "Utilities for working with SCT, ASR and ESE files.",
     "main": "dist/src/index.js",
     "type": "module",
@@ -20,10 +20,13 @@
     "scripts": {
         "test": "mocha",
         "build": "tsc",
+        "build:prod": "tsc -p tsconfig.prod.json",
         "lint": "prettier --check .",
         "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
-        "postinstall": "npm run build",
-        "prepublishOnly": "npm run build"
+        "prepare": "exit 0",
+        "prepublishOnly": "npm run build:prod",
+        "prepack": "npm run build:prod",
+        "release": "npm run build:prod && git add dist && git commit -m \"Build: Update pre-built distribution files\""
     },
     "author": "Contributors to sector-file-tools",
     "repository": {
@@ -49,7 +52,7 @@
         "@types/chai": "^4.3.4",
         "@types/chai-almost": "^1.0.1",
         "@types/geojson": "^7946.0.10",
-        "@types/mocha": "^10.0.1",
+        "@types/mocha": "^10.0.10",
         "ts-node": "^10.9.1",
         "chai": "^4.3.7",
         "chai-almost": "^1.0.1",

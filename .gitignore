@@ -1,7 +1,8 @@
 .idea
 .nyc_output
 coverage
-dist
+# Allow dist to be committed for GitHub distribution
+# dist
 node_modules
 tmp
 *.iml
