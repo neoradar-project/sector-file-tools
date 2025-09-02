@@ -8,9 +8,15 @@
     "exports": {
         ".": {
             "import": "./dist/src/index.js",
+            "require": "./dist/src/index.js",
+            "default": "./dist/src/index.js",
             "types": "./dist/src/index.d.ts"
         }
     },
+    "files": [
+        "dist/",
+        "index.js"
+    ],
     "scripts": {
         "test": "mocha",
         "build": "tsc",
