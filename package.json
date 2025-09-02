@@ -39,21 +39,21 @@
     "homepage": "https://github.com/eirslett/sector-file-tools",
     "license": "MIT",
     "devDependencies": {
+        "prettier": "^2.8.3",
+        "eslint": "^8.33.0"
+    },
+    "dependencies": {
+        "@turf/projection": "^7.2.0",
+        "typescript": "^5.8.3",
         "@types/node": "^22.0.0",
         "@types/chai": "^4.3.4",
         "@types/chai-almost": "^1.0.1",
         "@types/geojson": "^7946.0.10",
         "@types/mocha": "^10.0.1",
+        "ts-node": "^10.9.1",
         "chai": "^4.3.7",
         "chai-almost": "^1.0.1",
-        "eslint": "^8.33.0",
         "mocha": "^11.0.0",
-        "nyc": "^15.1.0",
-        "prettier": "^2.8.3",
-        "ts-node": "^10.9.1"
-    },
-    "dependencies": {
-        "@turf/projection": "^7.2.0",
-        "typescript": "^5.8.3"
+        "nyc": "^15.1.0"
     }
 }
