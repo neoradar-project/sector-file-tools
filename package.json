@@ -22,7 +22,7 @@
         "build": "tsc",
         "lint": "prettier --check .",
         "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
-        "prepare": "npm run build",
+        "postinstall": "npm run build",
         "prepublishOnly": "npm run build"
     },
     "author": "Contributors to sector-file-tools",
@@ -54,7 +54,6 @@
     },
     "dependencies": {
         "@turf/projection": "^7.2.0",
-        "typescript": "^5.8.3",
-        "@types/geojson": "^7946.0.10"
+        "typescript": "^5.8.3"
     }
 }
