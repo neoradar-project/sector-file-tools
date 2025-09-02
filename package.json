@@ -1,6 +1,6 @@
 {
     "name": "sector-file-tools",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Utilities for working with SCT, ASR and ESE files.",
     "main": "dist/src/index.js",
     "type": "module",
@@ -56,7 +56,6 @@
         "ts-node": "^10.9.1",
         "chai": "^4.3.7",
         "chai-almost": "^1.0.1",
-        "mocha": "^11.0.0",
-        "nyc": "^15.1.0"
+        "mocha": "^11.0.0"
     }
 }
