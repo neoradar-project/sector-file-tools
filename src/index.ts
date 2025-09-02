@@ -1,4 +1,17 @@
-export { SCT } from './sct.js';
+export {
+  SCT,
+  Navaid,
+  VOR,
+  NDB,
+  FIX,
+  Airport,
+  Runway,
+  Segment,
+  Geo,
+  Polygon,
+  Region,
+  Label
+} from './sct.js';
 export { ASR } from './asr.js';
 export { ESE } from './ese.js';
 
