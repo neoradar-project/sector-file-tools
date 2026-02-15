@@ -277,14 +277,14 @@ export function toGeoJson(
       .flatMap((artcc) => geoToGeo(artcc, 'artcc', system)),
     sct.artccLow
       .filter((artcc) => (asr != null ? asr.artccLow.includes(artcc.id) : true))
-      .flatMap((artcc) => geoToGeo(artcc, 'artcc-low', system)),
+      .flatMap((artcc) => geoToGeo(artcc, 'artccLow', system)),
     sct.artccHigh
       .filter((artcc) =>
         asr != null ? asr.artccHigh.includes(artcc.id) : true
       )
-      .flatMap((artcc) => geoToGeo(artcc, 'artcc-high', system)),
-    sct.highAirway.flatMap((airway) => geoToGeo(airway, 'high-airway', system)),
-    sct.lowAirway.flatMap((airway) => geoToGeo(airway, 'low-airway', system)),
+      .flatMap((artcc) => geoToGeo(artcc, 'artccHigh', system)),
+    sct.highAirway.flatMap((airway) => geoToGeo(airway, 'highAirway', system)),
+    sct.lowAirway.flatMap((airway) => geoToGeo(airway, 'lowAirway', system)),
   ]);
 
   return {
