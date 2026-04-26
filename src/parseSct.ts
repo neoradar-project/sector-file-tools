@@ -13,7 +13,7 @@ import {
     SCT,
     Segment,
     VOR,
-} from './sct';
+} from './sct.js';
 
 const geoTypes = [
     'ARTCC',

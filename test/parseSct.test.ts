@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { SCT, parseSct, Position, Color } from '../src';
+import { type SCT, parseSct, Position, Color } from '../src/index.js';
 
 const empty: SCT = {
     info: {},

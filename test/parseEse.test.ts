@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { ESE, parseEse, Position, SCT } from '../src';
+import { type ESE, parseEse, Position, type SCT } from '../src/index.js';
 
 const empty: ESE = {
   freetext: {},

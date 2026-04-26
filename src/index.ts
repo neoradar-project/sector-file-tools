@@ -1,4 +1,4 @@
-export {
+export type {
   SCT,
   Navaid,
   VOR,
@@ -12,8 +12,8 @@ export {
   Region,
   Label
 } from './sct.js';
-export { ASR } from './asr.js';
-export { ESE } from './ese.js';
+export type { ASR } from './asr.js';
+export type { ESE } from './ese.js';
 
 export { default as parseSct } from './parseSct.js';
 export { default as parseAsr } from './parseAsr.js';

@@ -1,6 +1,6 @@
-export { SCT, Navaid, VOR, NDB, FIX, Airport, Runway, Segment, Geo, Polygon, Region, Label } from './sct.js';
-export { ASR } from './asr.js';
-export { ESE } from './ese.js';
+export type { SCT, Navaid, VOR, NDB, FIX, Airport, Runway, Segment, Geo, Polygon, Region, Label } from './sct.js';
+export type { ASR } from './asr.js';
+export type { ESE } from './ese.js';
 export { default as parseSct } from './parseSct.js';
 export { default as parseAsr } from './parseAsr.js';
 export { default as parseEse } from './parseEse.js';

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { ASR, parseAsr, Position } from '../src';
+import { type ASR, parseAsr, Position } from '../src/index.js';
 
 const empty: ASR = {
     sectorFile: '',

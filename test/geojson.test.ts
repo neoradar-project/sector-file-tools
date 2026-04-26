@@ -1,6 +1,6 @@
-import { ASR, Color, ESE, parseSct, Position, SCT, toGeoJson } from '../src';
+import { type ASR, Color, type ESE, parseSct, Position, type SCT, toGeoJson } from '../src/index.js';
 import { expect } from 'chai';
-import { Geo } from '../src/sct';
+import type { Geo } from '../src/sct.js';
 
 const emptyAsr: ASR = {
   sectorFile: '',
@@ -236,7 +236,7 @@ describe('Generate GeoJSON', function () {
           ],
         },
         properties: {
-          type: 'artcc-low',
+          type: 'artccLow',
           color: [200, 200, 200],
           section: 'CTR - ENGM',
         },
@@ -251,7 +251,7 @@ describe('Generate GeoJSON', function () {
           ],
         },
         properties: {
-          type: 'artcc-low',
+          type: 'artccLow',
           section: 'CTR - ENGM',
           color: [200, 200, 200],
         },
@@ -267,7 +267,7 @@ describe('Generate GeoJSON', function () {
         properties: {
           color: [200, 200, 200],
           section: 'CTR - ENGM',
-          type: 'artcc-low',
+          type: 'artccLow',
         },
         type: 'Feature',
       },

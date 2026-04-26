@@ -1,6 +1,6 @@
 import chai, { expect } from 'chai';
 import chaiAlmost from 'chai-almost';
-import { Position } from '../src';
+import { Position } from '../src/index.js';
 
 chai.use(chaiAlmost());
 
