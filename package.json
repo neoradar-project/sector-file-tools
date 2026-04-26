@@ -1,6 +1,6 @@
 {
     "name": "sector-file-tools",
-    "version": "1.2.6",
+    "version": "1.2.7",
     "description": "Utilities for working with SCT, ASR and ESE files.",
     "main": "dist/src/index.js",
     "type": "module",
@@ -25,7 +25,6 @@
         "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",
         "prepare": "exit 0",
         "prepublishOnly": "npm run build:prod",
-        "prepack": "npm run build:prod",
         "release": "npm run build:prod && git add dist && git commit -m \"Build: Update pre-built distribution files\""
     },
     "author": "Contributors to sector-file-tools",
